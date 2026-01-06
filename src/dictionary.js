@@ -14,12 +14,14 @@ const JANO_KEYWORDS = {
   // --- Functions & Classes ---
   'ተግባር': 'function',
   'መልስ': 'return',
-  'ክፍል': 'class',
+  "መደብ": "class",
   'አዲስ': 'new',
   'ያራዝማል': 'extends',  // Updated: Logical for inheritance
   'የበላይ': 'super',     // Updated: Logical for "the one above"
   'አስገኝ': 'yield',      // Updated: Better DX for generators
-
+  "ክፍል": "module",         // Module
+    "ጠይቅ": "require",        // Require
+    "ውጤት": "exports",
   // --- Logic & Flow Control ---
   'ከሆነ': 'if',
   'ካልሆነ': 'else',
@@ -33,6 +35,7 @@ const JANO_KEYWORDS = {
   'ለእያንዳንዱ': 'for',
   'እስከ': 'while',
   'ውስጥ': 'in',
+  "የ": "of",
 
   // --- Booleans & Types ---
   'እውነት': 'true',
