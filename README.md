@@ -1,7 +1,7 @@
 
 ---
+ # ጃኖ ፊደል (Jano Fidel) ![ጃኖ ፊደል (Jano Fidel)](assets/favicon.ico)
 
-![ጃኖ ፊደል (Jano Fidel)](asset/logo.png)
 
 **A Native Amharic Programming Language built on Node.js.**
 
@@ -16,7 +16,7 @@
 * **CLI Tool**: Run your code globally with the `jano` command.
 
 ---
-
+![ጃኖ ፊደል (Jano Fidel)](assets/logo.png)
 ## 🚀 አጀማመር (Quick Start)
 
 ### 1. Installation
