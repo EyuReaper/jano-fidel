@@ -1,100 +1,42 @@
 #!/usr/bin/env node
-
-const { transpile, JANO_PRELUDE } = require('../src/engine');
-const { spawn } = require('child_process');
+const { processFile } = require('../src/engine'); // Assuming processFile handles reading + prelude
+const { runCode } = require('../src/runner');
 const path = require('path');
-const fs = require('fs');
+
+// Branding
+const RED_BG = '\x1b[41m';
+const WHITE_TEXT = '\x1b[37m';
+const BOLD = '\x1b[1m';
+const RESET = '\x1b[0m';
+
+const logo = `${RED_BG}${WHITE_TEXT}${BOLD} ጃ ${RESET} ${RED_BG}${WHITE_TEXT}${BOLD} ፊ ${RESET}  ${BOLD}ጃኖ ፊደል (Jano Fidel)${RESET}\n`;
 
 const fileArg = process.argv[2];
 
+// 1. Show Help/Logo if no file provided
 if (!fileArg) {
-    console.log(`
-    ጃኖ ፊደል (Jano Fidel) - CLI
-    ---------------------------
-    አጠቃቀም (Usage): 
-      jano <ፋይል_ስም.jf>    - ፋይሉን ለማስኬድ
-    `);
+    console.log(logo);
+    console.log("አጠቃቀም: jano <ፋይል_ስም.jf>");
     process.exit(1);
 }
 
-const mainFile = path.resolve(process.cwd(), fileArg);
+// 2. Resolve paths
+const filePath = path.resolve(process.cwd(), fileArg);
 
-if (!mainFile.endsWith('.jf')) {
+if (!filePath.endsWith('.jf')) {
     console.error("ስህተት: ፋይሉ በ '.jf' ማለቅ አለበት።");
     process.exit(1);
 }
 
-const DIST_DIR = path.join(process.cwd(), 'dist');
-
-// To keep track of processed files and avoid loops
-const processedFiles = new Set();
-
-function compileRecursive(filePath) {
-    console.log(`Compiling: ${filePath}`);
-    if (processedFiles.has(filePath)) {
-        console.log('Already processed, skipping.');
-        return;
-    }
-    processedFiles.add(filePath);
-
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-
-    // Find all .jf requires
-    const requireRegex = /ጠይቅ\s*\(\s*['"](.+?\.jf)['"]\s*\)/g;
-    let match;
-    while ((match = requireRegex.exec(fileContent)) !== null) {
-        const requiredFile = path.resolve(path.dirname(filePath), match[1]);
-        console.log(`Found dependency: ${requiredFile}`);
-        if (fs.existsSync(requiredFile)) {
-            compileRecursive(requiredFile);
-        } else {
-            console.log('Dependency not found, skipping.');
-        }
-    }
-
-    // Transpile the file content
-    let transpiledCode = transpile(fileContent);
-
-    // Replace .jf with .js in require paths
-    transpiledCode = transpiledCode.replace(/(require\s*\(\s*['"])([^'"]+)\.jf(['"]\s*\))/g, '$1$2.js$3');
-
-    const finalCode = `${JANO_PRELUDE}\n${transpiledCode}`;
-
-    // Save the transpiled file to dist
-    const outFileName = path.basename(filePath, '.jf') + '.js';
-    const outFilePath = path.join(DIST_DIR, outFileName);
-    fs.writeFileSync(outFilePath, finalCode, 'utf8');
-}
-
-
+// 3. The Execution Flow
 try {
-    // 1. Setup dist dir
-    if (fs.existsSync(DIST_DIR)) {
-        fs.rmSync(DIST_DIR, { recursive: true, force: true });
-    }
-    fs.mkdirSync(DIST_DIR);
-
-    // 2. Compile all files
-    compileRecursive(mainFile);
-
-    // 3. Run the main file
-    const mainJsFile = path.join(DIST_DIR, path.basename(mainFile, '.jf') + '.js');
+    // Note: Use your existing processFile which reads the code and adds the prelude
+    const jsCode = processFile(filePath); 
     
-    const child = spawn('node', [mainJsFile], { stdio: 'inherit' });
-    child.on('close', (code) => {
-        // Clean up dist dir
-        if (fs.existsSync(DIST_DIR)) {
-            fs.rmSync(DIST_DIR, { recursive: true, force: true });
-        }
-        if (code !== 0) {
-            console.error(`\nJano process exited with code ${code}`);
-        }
-    });
+    // This calls your professional runner with the styled boxes
+    runCode(jsCode, filePath);
 
 } catch (err) {
-    console.error('An error occurred:', err);
-    // Clean up dist dir
-    if (fs.existsSync(DIST_DIR)) {
-        fs.rmSync(DIST_DIR, { recursive: true, force: true });
-    }
+    // This catches high-level file reading errors
+    console.error(`\n[የጃኖ ስህተት]: ${err.message}`);
 }

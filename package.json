@@ -1,15 +1,18 @@
 {
   "name": "janofidel",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "icon": "icon.png",
+  "description": "Amharic Programming Language (Jano Fidel)",
+  "main": "src/engine.js",
+  "bin": {
+    "jano": "./bin/jano.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "type": "commonjs",
+  "scripts": {
+    "test": "node bin/jano.js ዋና.jf"
+  },
+  "author": "EyuReaper",
+  "license": "MIT",
   "dependencies": {
     "chokidar": "^5.0.0"
   }

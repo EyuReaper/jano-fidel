@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Jano Fidel",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#keywords" },
+    { "include": "#constants" }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [{
+          "name": "keyword.control.jano",
+          "match": "\\b(ከሆነ|ካልሆነ|ለእያንዳንዱ|እስከ|መልስ|ከሆነስ|ሞክር|ያዝ|በመጨረሻ|ጠይቅ)\\b"
+        },
+        {
+          "name": "storage.type.jano",
+          "match": "\\b(ይሁን|ቋሚ|ተግባር|መደብ|ክፍል|አዲስ)\\b"
+        },
+      {
+        "name": "support.function.jano",
+        "match": "\\b(ያትም|ወደ_ቁጥር|ወደ_ሕብረቁምፊ|ተርጉም)\\b"
+      },
+      {
+          "name": "support.class.jano",
+          "match": "\\b(ጃነማ|ድርድር|ሕብረቁምፊ|ሒሳብ|ቀን|ቁጥር)\\b"
+        }]
+    },
+    "strings": {
+      "name": "string.quoted.double.jano",
+      "begin": "\"", "end": "\""
+    },
+    "comments": {
+      "name": "comment.line.double-slash.jano",
+      "match": "//.*$"
+    }
+  },
+  "scopeName": "source.jf"
+}

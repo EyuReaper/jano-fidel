@@ -1,0 +1,39 @@
+{
+  "name": "janofidel-syntax",
+  "displayName": "Jano Fidel Programming Language",
+  "description": "Syntax highlighting and language support for Jano Fidel (.jf)",
+  "version": "1.0.0",
+  "bin": {
+    "jano": "./bin/jano.js"
+  },
+  "publisher": "JanoFidel",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "icon": "logo.png", 
+  "contributes": {
+    "languages": [
+      {
+        "id": "jano",
+        "aliases": [
+          "Jano Fidel",
+          "jano"
+        ],
+        "extensions": [
+          ".jf"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "jano",
+        "scopeName": "source.jf",
+        "path": "./syntaxes/jano.tmLanguage.json"
+      }
+    ]
+  }
+}
