@@ -91,9 +91,3 @@ This project is licensed under the **MIT License**.
 
 ---
 
-### What to do next:
-
-1. **Push to GitHub**: Initialize a git repo (`git init`), add your files, and push it to a new repository.
-2. **Screenshot**: Take a screenshot of your terminal running `jano ዋና.jf` and add it to the README to show it off!
-
-**Would you like me to help you draft the `git` commands to push this to GitHub for the first time?**
