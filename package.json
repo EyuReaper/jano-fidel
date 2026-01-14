@@ -1,7 +1,7 @@
 {
   "name": "janofidel",
   "version": "1.0.0",
-  "icon": "icon.png",
+  "icon": "assets/logo.png",
   "description": "Amharic Programming Language (Jano Fidel)",
   "main": "src/engine.js",
   "bin": {
@@ -9,11 +9,11 @@
   },
   "type": "commonjs",
   "scripts": {
-    "test": "node bin/jano.js ዋና.jf"
+    "test": "mocha test/**/*.test.js"
   },
   "author": "EyuReaper",
   "license": "MIT",
-  "dependencies": {
-    "chokidar": "^5.0.0"
+  "devDependencies": {
+    "mocha": "^11.7.5"
   }
 }
