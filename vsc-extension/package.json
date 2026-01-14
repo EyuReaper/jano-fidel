@@ -34,6 +34,13 @@
         "scopeName": "source.jf",
         "path": "./syntaxes/jano.tmLanguage.json"
       }
+    ],
+    "iconThemes": [
+      {
+        "id": "janofidel-icons",
+        "label": "Jano Fidel Icons",
+        "path": "./jano-icons.json"
+      }
     ]
   }
 }
