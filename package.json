@@ -1,11 +1,10 @@
 {
   "name": "janofidel",
-  "version": "1.0.0",
-  "icon": "assets/logo.png",
+  "version": "1.0.4",
   "description": "Amharic Programming Language (Jano Fidel)",
   "main": "src/engine.js",
   "bin": {
-    "jano": "./bin/jano.js"
+    "jano": "bin/jano.js"
   },
   "type": "commonjs",
   "publishConfig": {
@@ -43,9 +42,7 @@
   "files": [
     "bin/",
     "src/",
-    "dictionary.js",
-    "prelude.js",
     "README.md",
-    "LICENSE"
+    "LICENSE.txt"
   ]
 }

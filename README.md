@@ -21,6 +21,12 @@
 
 ### 1. Installation
 
+## For users
+```bash 
+npm install -g janofidel@latest
+ ```
+
+## For developers
 Clone the repository and link it to your global path:
 
 ```bash
@@ -51,6 +57,14 @@ sudo npm link
 jano ሰላምታ.jf
 
 ```
+
+---
+## 🛠️ CLI ትዕዛዞች (CLI Usage)
+|command(ትዕዛዝ) | Description(መግለጫ) |
+| --- | --- |
+|`jano <file.jf>` | Runs the JanoFidel file |
+|`jano -v, --version` | Show current version |
+|`jano -h, --help` | Show the help manual |
 
 ---
 

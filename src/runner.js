@@ -1,9 +1,9 @@
 const { spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const hookPath = require.resolve('./hook');
+const { version } = require('../package.json'); // Pull version from package.json
 
-// --- 1. Helpers (Top of the file) ---
+// --- 1. Helpers ---
 
 const style = {
     red: (t) => `\x1b[31m${t}\x1b[0m`,
@@ -11,6 +11,30 @@ const style = {
     bold: (t) => `\x1b[1m${t}\x1b[0m`,
     reset: '\x1b[0m'
 };
+
+/**
+ * Handles CLI flags before running code
+ * @param {string[]} args 
+ */
+function handleFlags(args) {
+    if (args.includes('--version') || args.includes('-v')) {
+        console.log(`ጃኖ ፊደል (Jano Fidel) - Version ${version}`);
+        process.exit(0);
+    }
+    if (args.includes('--help') || args.includes('-h')) {
+        console.log(`
+${style.bold("ጃኖ ፊደል (Jano Fidel) CLI")}
+
+${style.bold("አጠቃቀም (Usage):")}
+  jano <ፋይል_ስም.jf>
+
+${style.bold("ትዕዛዞች (Flags):")}
+  -v, --version    የስሪት ቁጥሩን ያሳያል (Show version)
+  -h, --help       ይህንን መመሪያ ያሳያል (Show help)
+        `);
+        process.exit(0);
+    }
+}
 
 function getExitSummary(code) {
     if (code === 1) return "ያልተጠበቀ ስህተት አጋጥሟል (Uncaught Error)";
@@ -28,6 +52,9 @@ function remapStack(data, tempFilePath, originalFileName) {
 // --- 2. Main Execution Function ---
 
 function runCode(jsCode, originalFilePath) {
+    // Check flags from the actual command line
+    handleFlags(process.argv.slice(2));
+
     const fileName = path.basename(originalFilePath);
     const dirName = path.dirname(path.resolve(originalFilePath));
     const tempFile = path.join(dirName, `.${path.basename(originalFilePath, '.jf')}.tmp.js`);
@@ -35,7 +62,6 @@ function runCode(jsCode, originalFilePath) {
     try {
         fs.writeFileSync(tempFile, jsCode, 'utf8');
 
-        // Preload the hook to handle imports
         const hookPath = require.resolve('./hook');
         const child = spawn('node', ['-r', hookPath, tempFile], { 
             stdio: ['inherit', 'inherit', 'pipe'], 
@@ -47,7 +73,6 @@ function runCode(jsCode, originalFilePath) {
             process.stderr.write(remappedError);
         });
 
-        // --- THE BOX UI LOGIC  HERE ---
         child.on('close', (code) => {
             if (fs.existsSync(tempFile)) {
                 try { fs.unlinkSync(tempFile); } catch(e) {}

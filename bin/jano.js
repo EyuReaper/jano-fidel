@@ -1,42 +1,52 @@
 #!/usr/bin/env node
-const { processFile } = require('../src/engine'); // Assuming processFile handles reading + prelude
+const { processFile } = require('../src/engine');
 const { runCode } = require('../src/runner');
 const path = require('path');
+const pkg = require('../package.json');
 
-// Branding
+// Branding Colors
 const RED_BG = '\x1b[41m';
 const WHITE_TEXT = '\x1b[37m';
 const BOLD = '\x1b[1m';
 const RESET = '\x1b[0m';
 
-const logo = `${RED_BG}${WHITE_TEXT}${BOLD} ጃ ${RESET} ${RED_BG}${WHITE_TEXT}${BOLD} ፊ ${RESET}  ${BOLD}ጃኖ ፊደል (Jano Fidel)${RESET}\n`;
+const logo = `${RED_BG}${WHITE_TEXT}${BOLD} ጃ ${RESET} ${RED_BG}${WHITE_TEXT}${BOLD} ፊ ${RESET}  ${BOLD}ጃኖ ፊደል (Jano Fidel)${RESET} v${pkg.version}\n`;
 
-const fileArg = process.argv[2];
+const args = process.argv.slice(2);
+const fileArg = args[0];
 
-// 1. Show Help/Logo if no file provided
-if (!fileArg) {
+// 1. Handle Version Flag
+if (args.includes('--version') || args.includes('-v')) {
     console.log(logo);
-    console.log("አጠቃቀም: jano <ፋይል_ስም.jf>");
-    process.exit(1);
+    process.exit(0);
 }
 
-// 2. Resolve paths
+// 2. Handle Help Flag or No Arguments
+if (args.includes('--help') || args.includes('-h') || !fileArg) {
+    console.log(logo);
+    console.log(`${BOLD}አጠቃቀም (Usage):${RESET}`);
+    console.log("  jano <ፋይል_ስም.jf>");
+    
+    console.log(`\n${BOLD}ትዕዛዞች (Flags):${RESET}`);
+    console.log("  -v, --version    የስሪት ቁጥሩን ያሳያል (Show version)");
+    console.log("  -h, --help       ይህንን መመሪያ ያሳያል (Show help)");
+    
+    console.log(`\n${BOLD}ምሳሌ (Example):${RESET}`);
+    console.log("  jano ሰላም.jf");
+    process.exit(0);
+}
+
+// 3. Main Execution
 const filePath = path.resolve(process.cwd(), fileArg);
 
 if (!filePath.endsWith('.jf')) {
-    console.error("ስህተት: ፋይሉ በ '.jf' ማለቅ አለበት።");
+    console.error(`${BOLD}${RED_BG} ስህተት ${RESET} ፋይሉ በ '.jf' ማለቅ አለበት።`);
     process.exit(1);
 }
 
-// 3. The Execution Flow
 try {
-    // Note: Use your existing processFile which reads the code and adds the prelude
     const jsCode = processFile(filePath); 
-    
-    // This calls your professional runner with the styled boxes
     runCode(jsCode, filePath);
-
 } catch (err) {
-    // This catches high-level file reading errors
-    console.error(`\n[የጃኖ ስህተት]: ${err.message}`);
+    console.error(`\n${BOLD}${RED_BG} የጃኖ ስህተት ${RESET}: ${err.message}`);
 }
