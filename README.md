@@ -65,6 +65,7 @@ jano ሰላምታ.jf
 |`jano <file.jf>` | Runs the JanoFidel file |
 |`jano -v, --version` | Show current version |
 |`jano -h, --help` | Show the help manual |
+|`jano -l, --list` | Access dictionary list |
 
 ---
 
