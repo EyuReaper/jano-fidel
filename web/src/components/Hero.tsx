@@ -99,7 +99,7 @@ export default function Hero() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             href="#docs"
-            className="px-8 py-4 bg-white/10 dark:bg-white/5 hover:bg-white/20 dark:hover:bg-white/10 text-gray-900 dark:text-white rounded-xl font-semibold backdrop-blur-xl border border-gray-300 dark:border-white/20 transition-all"
+            className="px-8 py-4 bg-white/10 dark:bg-white/5 hover:bg-white/20 dark:hover:bg-white/10 text-gray-900 dark:text-white rounded-xl font-semibold backdrop-blur-xl border border-white/20 transition-all"
           >
             Read Docs
           </motion.a>
@@ -108,3 +108,4 @@ export default function Hero() {
     </section>
   );
 }
+

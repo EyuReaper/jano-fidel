@@ -1,0 +1,48 @@
+{
+  "name": "janofidel",
+  "version": "1.0.6",
+  "description": "Amharic Programming Language (Jano Fidel)",
+  "main": "src/engine.js",
+  "bin": {
+    "jano": "bin/jano.js"
+  },
+  "type": "commonjs",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "test": "mocha test/**/*.test.js"
+  },
+  "keywords": [
+    "amharic",
+    "ethiopia",
+    "ጃኖ",
+    "ፊደል",
+    "jano",
+    "fidel",
+    "language",
+    "compiler"
+  ],
+  "author": "EyuReaper",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EyuReaper/JanoFidel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EyuReaper/JanoFidel/issues"
+  },
+  "homepage": "https://github.com/EyuReaper/JanoFidel#readme",
+  "devDependencies": {
+    "mocha": "^11.7.5"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md",
+    "LICENSE.txt"
+  ]
+}
