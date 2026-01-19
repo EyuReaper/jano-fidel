@@ -7,11 +7,14 @@ const fs = require('fs');
  */
 function transpile(inputCode) {
     // This regex identifies words, strings, and Ethiopic symbols
-    const regex = /("[^"]*"|'[^']*'|`[^`]*`|\/\/[^\n]*|[።፤፡፦፣]|[ሀ-፟፩-፿]+|[a-zA-Z0-9_]+|[^\s])/g;
+    const regex = /("[^"]*"|'[^']*'|`[^`]*`|\/\/[^\n]*|=>|[።፤፡፦፣]|[ሀ-፟፩-፿]+|[a-zA-Z0-9_]+|[^\s])/g;
     
     return inputCode.replace(regex, (token) => {
-        if (token.startsWith('"') || token.startsWith("'") || token.startsWith("//")) {
+        if (token.startsWith('"') || token.startsWith("'") || token.startsWith("`")) {
             return token;
+        }
+        if (token.startsWith('//')) {
+            return ''; // Ignore comments
         }
 
         // Check if the token is an Ethiopic Number (e.g., ፲፪)
