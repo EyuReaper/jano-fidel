@@ -76,7 +76,7 @@ const JANO_KEYWORDS = {
 
   // --- Modules & Access Control (Strict/Future Use) ---
   'የጋራ': 'public',     // Updated: Intuitive for shared access
-  'የግል': 'private',     // Hidden/Encapsulated
+  // 'የግል': 'private',     // Hidden/Encapsulated
   'የተጠበቀ': 'protected',
   'ላክ': 'export',
   'ውጤት': 'exports',
