@@ -1,24 +1,31 @@
 import { motion } from 'framer-motion';
 import { Moon, Sun, Github, Code2 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import GitHubStarButton from './GitHubStarButton';
 
 export default function Navigation() {
   const { theme, toggleTheme } = useTheme();
 
   return (
+    
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl"
+      className="fixed top-4 left-[20%] -translate-x-1/2 z-50 w-[95%] max-w-6xl"
     >
-      <div className="px-6 py-4 border shadow-2xl bg-white/10 dark:bg-black/20 backdrop-blur-xl border-white/20 dark:border-white/10 rounded-2xl">
+      <div className="px-5 py-4 border shadow-2xl bg-white/10 dark:bg-black/20 backdrop-blur-xl border-white/20 dark:border-white/10 rounded-2xl">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+
+          <div className="flex items-center gap-3 pr-4 ">
             <Code2 className="w-8 h-8 text-jano-red" strokeWidth={2.5} />
-            <span className="text-2xl font-bold text-transparent bg-gradient-to-r from-jano-red to-red-600 bg-clip-text">
+            <div className="flex flex-col"></div>
+            <span className="text-2xl font-bold leading-none text-transparent bg-gradient-to-r from-jano-red to-red-600 bg-clip-text">
               Jano Fidel
             </span>
+            <span className="text-[10px] font-mono text-green-500 dark:text-green-400 mt-1 flex items-center gap-2 border-r ">
+                v1.0.0 <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+              </span>
           </div>
 
           <div className="items-center hidden gap-8 md:flex">
@@ -43,17 +50,11 @@ export default function Navigation() {
           </div>
 
           <div className="flex items-center gap-3">
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 text-white transition-all bg-gray-900 border border-gray-700 rounded-lg dark:bg-white/10 dark:text-gray-200 hover:bg-gray-800 dark:hover:bg-white/20 dark:border-white/20"
-            >
-              <Github className="w-4 h-4" />
-              <span className="hidden sm:inline">Star</span>
-            </motion.a>
+           
+          
+              <GitHubStarButton/>
+            
+            
 
             <motion.button
               whileHover={{ scale: 1.05 }}

@@ -1,6 +1,6 @@
 {
   "name": "janofidel",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "Amharic Programming Language (Jano Fidel)",
   "main": "src/engine.js",
   "bin": {
