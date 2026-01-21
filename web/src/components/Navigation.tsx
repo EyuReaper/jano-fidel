@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion';
-import { Moon, Sun, Github, Code2, Menu, X } from 'lucide-react';
+import { Moon, Sun, Code2, Menu, X } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import GitHubStarButton from './GitHubStarButton';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import i18n from '../i18n';
 
@@ -19,7 +18,7 @@ export default function Navigation() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-4 left-[20%] -translate-x-1/2 z-50 w-[95%] max-w-6xl"
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl"
     >
       <div className="px-5 py-4 border shadow-2xl bg-white/10 dark:bg-black/20 backdrop-blur-xl border-white/20 dark:border-white/10 rounded-2xl">
         <div className="flex items-center justify-between">
