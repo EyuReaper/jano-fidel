@@ -13,7 +13,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 pt-32 pb-20">
+    <section className="min-h-screen flex items-center justify-center px-4 pt-32 sm:pt-40 pb-20">
       <div className="max-w-5xl w-full text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -21,7 +21,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -44,7 +44,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto"
+          className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto"
         >
           The first programming language that brings the power of Ge'ez script to modern development.
           Write code that feels like home.
@@ -61,8 +61,8 @@ export default function Hero() {
               <Terminal className="w-4 h-4 text-jano-red" />
               <span className="text-sm text-gray-300 font-mono">Terminal</span>
             </div>
-            <div className="p-6 flex items-center justify-between">
-              <code className="text-green-400 font-mono text-lg flex-1 text-left">
+            <div className="p-4 sm:p-6 flex items-center justify-between">
+              <code className="text-green-400 font-mono text-base sm:text-lg flex-1 text-left overflow-x-auto">
                 $ {command}
               </code>
               <motion.button
@@ -91,7 +91,7 @@ export default function Hero() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             href="#playground"
-            className="px-8 py-4 bg-jano-red hover:bg-red-600 text-white rounded-xl font-semibold shadow-lg shadow-jano-red/30 dark:shadow-jano-red/50 transition-all"
+            className="px-6 sm:px-8 py-3 sm:py-4 bg-jano-red hover:bg-red-600 text-white rounded-xl font-semibold shadow-lg shadow-jano-red/30 dark:shadow-jano-red/50 transition-all"
           >
             Try Playground
           </motion.a>
@@ -99,7 +99,7 @@ export default function Hero() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             href="#docs"
-            className="px-8 py-4 bg-white/10 dark:bg-white/5 hover:bg-white/20 dark:hover:bg-white/10 text-gray-900 dark:text-white rounded-xl font-semibold backdrop-blur-xl border border-white/20 transition-all"
+            className="px-6 sm:px-8 py-3 sm:py-4 bg-white/10 dark:bg-white/5 hover:bg-white/20 dark:hover:bg-white/10 text-gray-900 dark:text-white rounded-xl font-semibold backdrop-blur-xl border border-white/20 transition-all"
           >
             Read Docs
           </motion.a>

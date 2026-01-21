@@ -21,19 +21,19 @@ export default function Dictionary() {
   }, [searchTerm, dictionaryEntries]);
 
   return (
-    <section id="dictionary" className="min-h-screen px-4 py-20">
+    <section id="dictionary" className="min-h-screen px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Language <span className="text-jano-red">Dictionary</span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto">
             Explore all Jano Fidel keywords and their JavaScript equivalents
           </p>
 
@@ -44,7 +44,7 @@ export default function Dictionary() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search keywords..."
-              className="w-full pl-12 pr-6 py-4 bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-jano-red/50"
+              className="w-full pl-12 pr-6 py-3 sm:py-4 bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-jano-red/50"
             />
           </div>
         </motion.div>
@@ -54,7 +54,7 @@ export default function Dictionary() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6"
         >
           {filteredEntries.map((entry, index) => (
             <motion.div
@@ -64,15 +64,15 @@ export default function Dictionary() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.02 }}
               whileHover={{ y: -5 }}
-              className="bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-6 shadow-lg hover:shadow-2xl hover:border-jano-red/50 transition-all"
+              className="bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-5 sm:p-6 shadow-lg hover:shadow-2xl hover:border-jano-red/50 transition-all"
             >
               <div className="flex items-center justify-between mb-2">
-                <span className="text-2xl font-bold text-jano-red">
+                <span className="text-xl sm:text-2xl font-bold text-jano-red">
                   {entry.jano}
                 </span>
-                <ArrowRight className="w-5 h-5 text-gray-400" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
               </div>
-              <code className="text-lg text-gray-700 dark:text-gray-200 font-mono">
+              <code className="text-base sm:text-lg text-gray-700 dark:text-gray-200 font-mono">
                 {entry.js}
               </code>
             </motion.div>
@@ -83,9 +83,9 @@ export default function Dictionary() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center py-20"
+            className="text-center py-10 sm:py-20"
           >
-            <p className="text-xl text-gray-500 dark:text-gray-400">
+            <p className="text-lg sm:text-xl text-gray-500 dark:text-gray-400">
               No keywords found matching "{searchTerm}"
             </p>
           </motion.div>

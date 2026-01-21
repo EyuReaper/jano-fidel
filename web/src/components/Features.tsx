@@ -36,24 +36,24 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="min-h-screen px-4 py-20">
+    <section id="docs" className="min-h-screen px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Powerful <span className="text-jano-red">Features</span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Everything you need to build modern applications in your native language
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
@@ -64,15 +64,15 @@ export default function Features() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="group bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:border-jano-red/50 transition-all"
+                className="group bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl hover:border-jano-red/50 transition-all"
               >
-                <div className="mb-6 inline-flex p-4 bg-jano-red/10 dark:bg-jano-red/20 rounded-xl group-hover:bg-jano-red/20 dark:group-hover:bg-jano-red/30 transition-all">
-                  <Icon className="w-8 h-8 text-jano-red" strokeWidth={2} />
+                <div className="mb-5 sm:mb-6 inline-flex p-3 sm:p-4 bg-jano-red/10 dark:bg-jano-red/20 rounded-xl group-hover:bg-jano-red/20 dark:group-hover:bg-jano-red/30 transition-all">
+                  <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-jano-red" strokeWidth={2} />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
                   {feature.description}
                 </p>
               </motion.div>
