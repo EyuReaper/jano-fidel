@@ -1,0 +1,16 @@
+feat(web): Add Amharic localization and improve UI
+
+This commit introduces Amharic localization across the Jano Fidel web application and refactors the background and language switcher for a better user experience.
+
+- **Localization:**
+    - Integrated `react-i18next` for i18n support.
+    - Added English (`en.json`) and Amharic (`am.json`) translation files.
+    - Localized strings in `App.tsx`, `Navigation.tsx`, `Hero.tsx`, `Features.tsx`, `Playground.tsx`, and `Dictionary.tsx`.
+
+- **UI Improvements:**
+    - Replaced the `AnimatedBackground` component with a static, theme-aware CSS gradient pattern for better performance and reliability.
+    - Implemented a stylish language toggle in `Navigation.tsx` that seamlessly switches between English and Amharic.
+
+- **Bug Fixes & Stability:**
+    - Resolved a React error caused by an invalid `<link>` tag in `Navigation.tsx`.
+    - Addressed and fixed the persistent "white screen" issue during development, likely caused by dependency conflicts (resolved via clean `npm install`).
