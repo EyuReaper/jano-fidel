@@ -18,7 +18,8 @@ export default function Navigation() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl"
+      className="fixed top-4 left-[20%
+      ] -translate-x-1/2 z-50 w-[95%] max-w-6xl"
     >
       <div className="px-5 py-4 border shadow-2xl bg-white/10 dark:bg-black/20 backdrop-blur-xl border-white/20 dark:border-white/10 rounded-2xl">
         <div className="flex items-center justify-between">
@@ -58,16 +59,16 @@ export default function Navigation() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'am' : 'en')}
-              className="relative w-16 h-8 flex items-center justify-center rounded-full bg-gray-200/50 dark:bg-white/10 border border-gray-300 dark:border-white/20"
+              className="relative flex items-center justify-center w-16 h-8 border border-gray-300 rounded-full bg-gray-200/50 dark:bg-white/10 dark:border-white/20"
             >
               <motion.span
-                className="absolute w-8 h-8 rounded-full bg-jano-red flex items-center justify-center text-white font-bold"
+                className="absolute flex items-center justify-center w-8 h-8 font-bold text-white rounded-full bg-jano-red"
                 layout
                 transition={{ type: 'spring', stiffness: 700, damping: 30 }}
                 animate={{ x: i18n.language === 'en' ? 8 : -8 }}
               />
-              <span className="absolute left-2 text-sm">{i18n.language === 'am' ? 'AM' : ''}</span>
-              <span className="absolute right-2 text-sm">{i18n.language === 'en' ? 'EN' : ''}</span>
+              <span className="absolute text-sm left-2">{i18n.language === 'am' ? 'AM' : ''}</span>
+              <span className="absolute text-sm right-2">{i18n.language === 'en' ? 'EN' : ''}</span>
             </motion.button>
 
             <motion.button

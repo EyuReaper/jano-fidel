@@ -2,9 +2,11 @@ import { motion } from 'framer-motion';
 import { Search, ArrowRight } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import JANO_KEYWORDS from '../utils/dictionary.js';
+import { useTranslation } from 'react-i18next';
 
 export default function Dictionary() {
   const [searchTerm, setSearchTerm] = useState('');
+  const { t } = useTranslation();
 
   const dictionaryEntries = useMemo(() => {
     return Object.entries(JANO_KEYWORDS).map(([jano, js]) => ({ jano, js }));
@@ -31,10 +33,10 @@ export default function Dictionary() {
           className="text-center mb-12 sm:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Language <span className="text-jano-red">Dictionary</span>
+            <span className="text-jano-red">{t('dictionary.title')}</span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto">
-            Explore all Jano Fidel keywords and their JavaScript equivalents
+            {t('dictionary.description')}
           </p>
 
           <div className="max-w-2xl mx-auto relative">
@@ -43,7 +45,7 @@ export default function Dictionary() {
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search keywords..."
+              placeholder={t('dictionary.search_placeholder')}
               className="w-full pl-12 pr-6 py-3 sm:py-4 bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-jano-red/50"
             />
           </div>
@@ -86,7 +88,7 @@ export default function Dictionary() {
             className="text-center py-10 sm:py-20"
           >
             <p className="text-lg sm:text-xl text-gray-500 dark:text-gray-400">
-              No keywords found matching "{searchTerm}"
+              {t('dictionary.no_keywords', { searchTerm: searchTerm })}
             </p>
           </motion.div>
         )}

@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
 import { Copy, Check, Terminal } from 'lucide-react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Hero() {
   const [copied, setCopied] = useState(false);
   const command = 'npm install -g janofidel';
+  const { t } = useTranslation();
 
   const handleCopy = () => {
     navigator.clipboard.writeText(command);
@@ -26,15 +28,15 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <span className="text-gray-900 dark:text-white">Code in </span>
+            <span className="text-gray-900 dark:text-white">{t('hero.code_in')} </span>
             <span className="bg-gradient-to-r from-jano-red to-red-600 bg-clip-text text-transparent">
-              Amharic
+              {t('hero.amharic')}
             </span>
             <span className="text-gray-900 dark:text-white">.</span>
             <br />
-            <span className="text-gray-900 dark:text-white">Build for the </span>
+            <span className="text-gray-900 dark:text-white">{t('hero.build_for_the')} </span>
             <span className="bg-gradient-to-r from-jano-red to-red-600 bg-clip-text text-transparent">
-              World
+              {t('hero.world')}
             </span>
             <span className="text-gray-900 dark:text-white">.</span>
           </motion.h1>
@@ -46,8 +48,8 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto"
         >
-          The first programming language that brings the power of Ge'ez script to modern development.
-          Write code that feels like home.
+          {t('hero.main_description')}
+          {t('hero.tagline')}
         </motion.p>
 
         <motion.div
@@ -59,7 +61,7 @@ export default function Hero() {
           <div className="bg-gray-900/90 dark:bg-black/60 backdrop-blur-xl border border-gray-700 dark:border-white/10 rounded-2xl overflow-hidden shadow-2xl">
             <div className="bg-gray-800/90 dark:bg-black/40 px-6 py-3 flex items-center gap-2 border-b border-gray-700 dark:border-white/10">
               <Terminal className="w-4 h-4 text-jano-red" />
-              <span className="text-sm text-gray-300 font-mono">Terminal</span>
+              <span className="text-sm text-gray-300 font-mono">{t('hero.terminal')}</span>
             </div>
             <div className="p-4 sm:p-6 flex items-center justify-between">
               <code className="text-green-400 font-mono text-base sm:text-lg flex-1 text-left overflow-x-auto">
@@ -93,7 +95,7 @@ export default function Hero() {
             href="#playground"
             className="px-6 sm:px-8 py-3 sm:py-4 bg-jano-red hover:bg-red-600 text-white rounded-xl font-semibold shadow-lg shadow-jano-red/30 dark:shadow-jano-red/50 transition-all"
           >
-            Try Playground
+            {t('hero.try_playground')}
           </motion.a>
           <motion.a
             whileHover={{ scale: 1.05 }}
@@ -101,11 +103,10 @@ export default function Hero() {
             href="#docs"
             className="px-6 sm:px-8 py-3 sm:py-4 bg-white/10 dark:bg-white/5 hover:bg-white/20 dark:hover:bg-white/10 text-gray-900 dark:text-white rounded-xl font-semibold backdrop-blur-xl border border-white/20 transition-all"
           >
-            Read Docs
+            {t('hero.read_docs')}
           </motion.a>
         </motion.div>
       </div>
     </section>
   );
 }
-

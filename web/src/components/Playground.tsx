@@ -2,10 +2,12 @@ import { motion } from 'framer-motion';
 import { Play, Code2, FileCode } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { transpileJanoToJs, sampleJanoCode } from '../utils/transpiler';
+import { useTranslation } from 'react-i18next';
 
 export default function Playground() {
   const [janoCode, setJanoCode] = useState(sampleJanoCode);
   const [jsOutput, setJsOutput] = useState('');
+  const { t } = useTranslation();
 
   useEffect(() => {
     console.log('Jano code changed:', janoCode);
@@ -29,10 +31,10 @@ export default function Playground() {
           className="text-center mb-12 sm:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Interactive <span className="text-jano-red">Playground</span>
+            <span className="text-jano-red">{t('playground.title')}</span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Write Jano Fidel code and see the JavaScript translation in real-time
+            {t('playground.description')}
           </p>
         </motion.div>
 
@@ -47,7 +49,7 @@ export default function Playground() {
             <div className="bg-gray-800/90 dark:bg-black/40 px-4 sm:px-6 py-3 flex items-center justify-between border-b border-gray-700 dark:border-white/10">
               <div className="flex items-center gap-2">
                 <Code2 className="w-4 h-4 text-jano-red" />
-                <span className="text-sm text-gray-300 font-semibold">Jano Fidel</span>
+                <span className="text-sm text-gray-300 font-semibold">{t('playground.jano_code')}</span>
               </div>
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -56,7 +58,7 @@ export default function Playground() {
                 className="flex items-center gap-2 px-3 py-1.5 bg-jano-red hover:bg-red-600 text-white rounded-lg text-sm font-medium transition-all"
               >
                 <Play className="w-3 h-3" fill="currentColor" />
-                Run
+                {t('playground.run')}
               </motion.button>
             </div>
             <textarea
@@ -71,7 +73,7 @@ export default function Playground() {
           <div className="bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl overflow-hidden shadow-2xl">
             <div className="bg-gray-800/90 dark:bg-black/40 px-4 sm:px-6 py-3 flex items-center gap-2 border-b border-gray-700 dark:border-white/10">
               <FileCode className="w-4 h-4 text-green-500" />
-              <span className="text-sm text-gray-300 font-semibold">JavaScript Output</span>
+              <span className="text-sm text-gray-300 font-semibold">{t('playground.javascript_output')}</span>
             </div>
             <pre className="w-full h-64 sm:h-80 md:h-96 bg-gray-900/50 dark:bg-black/30 text-green-400 p-4 sm:p-6 font-mono text-sm overflow-auto">
               {jsOutput}
@@ -86,7 +88,7 @@ export default function Playground() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400"
         >
-          Try editing the Jano code above. The JavaScript translation updates automatically!
+          {t('playground.edit_instruction')}
         </motion.div>
       </div>
     </section>

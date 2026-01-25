@@ -1,40 +1,42 @@
 import { motion } from 'framer-motion';
 import { Languages, Hash, Zap, Shield, Globe, Sparkles } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const features = [
   {
     icon: Languages,
-    title: 'Native Ge\'ez Support',
-    description: 'Write code in Amharic using the ancient and beautiful Ge\'ez script. Every keyword, every function name feels natural.',
+    title: 'features.native_geez_support.title',
+    description: 'features.native_geez_support.description',
   },
   {
     icon: Hash,
-    title: 'Ethiopic Numerals',
-    description: 'Full support for traditional Ethiopic numerals alongside modern numbers. Honor your heritage while coding.',
+    title: 'features.ethiopic_numerals.title',
+    description: 'features.ethiopic_numerals.description',
   },
   {
     icon: Zap,
-    title: 'Node.js Power',
-    description: 'Built on top of Node.js ecosystem. Access millions of npm packages and use familiar JavaScript tools.',
+    title: 'features.nodejs_power.title',
+    description: 'features.nodejs_power.description',
   },
   {
     icon: Shield,
-    title: 'Type Safe',
-    description: 'Optional type checking ensures your code is robust and maintainable. Catch errors before runtime.',
+    title: 'features.type_safe.title',
+    description: 'features.type_safe.description',
   },
   {
     icon: Globe,
-    title: 'Universal Output',
-    description: 'Compiles to standard JavaScript that runs everywhere. Deploy to browsers, servers, and mobile apps.',
+    title: 'features.universal_output.title',
+    description: 'features.universal_output.description',
   },
   {
     icon: Sparkles,
-    title: 'Modern Syntax',
-    description: 'Clean, expressive syntax that combines the best of modern JavaScript with Amharic linguistic patterns.',
+    title: 'features.modern_syntax.title',
+    description: 'features.modern_syntax.description',
   },
 ];
 
 export default function Features() {
+  const { t } = useTranslation();
   return (
     <section id="docs" className="min-h-screen px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
       <div className="max-w-7xl mx-auto">
@@ -46,10 +48,10 @@ export default function Features() {
           className="text-center mb-12 sm:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Powerful <span className="text-jano-red">Features</span>
+            <span className="text-jano-red">{t('features.powerful_features')}</span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Everything you need to build modern applications in your native language
+            {t('features.subtitle')}
           </p>
         </motion.div>
 
@@ -70,10 +72,10 @@ export default function Features() {
                   <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-jano-red" strokeWidth={2} />
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
-                  {feature.title}
+                  {t(feature.title)}
                 </h3>
                 <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {feature.description}
+                  {t(feature.description)}
                 </p>
               </motion.div>
             );
