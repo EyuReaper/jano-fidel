@@ -18,8 +18,7 @@ export default function Navigation() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-4 left-[20%
-      ] -translate-x-1/2 z-50 w-[95%] max-w-6xl"
+      className="fixed top-4 left-[20%] -translate-x-1/2 z-50 w-[95%] max-w-6xl"
     >
       <div className="px-5 py-4 border shadow-2xl bg-white/10 dark:bg-black/20 backdrop-blur-xl border-white/20 dark:border-white/10 rounded-2xl">
         <div className="flex items-center justify-between">
@@ -27,7 +26,7 @@ export default function Navigation() {
             <Code2 className="w-8 h-8 text-jano-red" strokeWidth={2.5} />
             <div className="flex flex-col"></div>
             <span className="text-2xl font-bold leading-none text-transparent bg-gradient-to-r from-jano-red to-red-600 bg-clip-text">
-              Jano Fidel
+              {t('navigation.title')}
             </span>
             <span className="text-[10px] font-mono text-green-500 dark:text-green-400 mt-1 flex items-center gap-2 border-r">
               {t('navigation.version')} <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
