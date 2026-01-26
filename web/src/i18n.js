@@ -8,11 +8,13 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   en: {
     translation: {
-      "navigation.version": "version 1.0.0",
+      "navigation.version": "version {{version}}",
       "navigation.docs": "Docs",
       "navigation.playground": "Playground",
+      "navigation.contributors": "Contributors",
       "navigation.dictionary": "Dictionary",
       "navigation.title": "Jano Fidel",
+      "navigation.become_a_contributor": "Become a contributor",
       "github.star": "Star on GitHub",
       "github.stars_label": "Stars",
       "features.powerful_features": "Powerful Features",
@@ -52,16 +54,19 @@ const resources = {
       "footer.ethiopian": "Ethiopian",
       "footer.for_the": "for the",
       "footer.developer_community": "Ethiopian developer community",
-      "footer.copyright": "Jano Fidel © {{year}} - Code in Amharic, Build for the World"
+      "footer.copyright": "Jano Fidel © {{year}} - Code in Amharic, Build for the World",
+      "contributors.title": "Become a contributor"
     }
   },
   am: {
     translation: {
-      "navigation.version": "ስሪት 1.0.0",
+      "navigation.version": "ስሪት {{version}}",
       "navigation.docs": "ሰነዶች",
       "navigation.playground": "የሙከራ ቦታ",
+      "navigation.contributors": "አበርካቾች",
       "navigation.dictionary": "መዝገበ ቃላት",
       "navigation.title": "ጃኖ ፊደል",
+      "navigation.become_a_contributor": "አበርካች ይሁኑ",
       "github.star": "በ GitHub ኮከብ ይስጡ",
       "github.stars_label": "ኮከቦች",
       "features.powerful_features": "ኃይለኛ ባህሪያት",
@@ -101,7 +106,8 @@ const resources = {
       "footer.ethiopian": "ኢትዮጵያዊ",
       "footer.for_the": "ለ",
       "footer.developer_community": "የኢትዮጵያ ገንቢ ማህበረሰብ",
-      "footer.copyright": "ጃኖ ፊደል © {{year}} - ኮድ በአማርኛ፣ ለአለም ይገንቡ"
+      "footer.copyright": "ጃኖ ፊደል © {{year}} - ኮድ በአማርኛ፣ ለአለም ይገንቡ",
+      "contributors.title": "አበርካች ይሁኑ"
     }
   }
 };

@@ -2,7 +2,8 @@ import { motion } from 'framer-motion';
 import { Moon, Sun, Code2, Menu, X } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import GitHubStarButton from './GitHubStarButton';
-import { useState } from 'react';
+import Contributors from './Contributors';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import i18n from '../i18n';
 
@@ -10,6 +11,20 @@ export default function Navigation() {
   const { theme, toggleTheme } = useTheme();
   const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [version, setVersion] = useState('1.0.0'); // Fallback version
+
+  useEffect(() => {
+    fetch('https://api.github.com/repos/EyuReaper/jano-fidel/tags') // Changed to tags endpoint
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0 && data[0].name) {
+          setVersion(data[0].name);
+        }
+      })
+      .catch((err) => {
+        console.error('Failed to fetch version', err);
+      });
+  }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -29,7 +44,7 @@ export default function Navigation() {
               {t('navigation.title')}
             </span>
             <span className="text-[10px] font-mono text-green-500 dark:text-green-400 mt-1 flex items-center gap-2 border-r">
-              {t('navigation.version')} <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+              {t('navigation.version', { version })} <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
             </span>
           </div>
 
@@ -42,6 +57,12 @@ export default function Navigation() {
               className="font-medium text-gray-800 transition-colors dark:text-gray-200 hover:text-jano-red dark:hover:text-jano-red"
             >
               {t('navigation.playground')}
+            </a>
+            <a
+              href="#contributors"
+              className="font-medium text-gray-800 transition-colors dark:text-gray-200 hover:text-jano-red dark:hover:text-jano-red"
+            >
+              {t('navigation.contributors')}
             </a>
             <a
               href="#dictionary"
@@ -111,6 +132,13 @@ export default function Navigation() {
               className="block py-2 font-medium text-gray-800 transition-colors dark:text-gray-200 hover:text-jano-red dark:hover:text-jano-red"
             >
               {t('navigation.playground')}
+            </a>
+            <a
+              href="#contributors"
+              onClick={toggleMenu}
+              className="block py-2 font-medium text-gray-800 transition-colors dark:text-gray-200 hover:text-jano-red dark:hover:text-jano-red"
+            >
+              {t('navigation.contributors')}
             </a>
             <a
               href="#dictionary"
