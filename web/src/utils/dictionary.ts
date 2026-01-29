@@ -1,10 +1,9 @@
-/**
- * ጃኖ ፊደል (Jano Fidel) - Official Dictionary
- * Mapping Amharic keywords to JavaScript equivalents.
- * Optimized for DX (Developer Experience) and logical flow.
- */
+// web/src/utils/dictionary.ts
+interface JanoKeywords {
+  [key: string]: string;
+}
 
-const JANO_KEYWORDS = {
+const JANO_KEYWORDS: JanoKeywords = {
   // --- Variables & Constants ---
   'ተለዋጭ': 'var',      // Added: Traditional variable declaration
   'ይሁን': 'let',        // Block-scoped variable

@@ -1,23 +1,28 @@
 import { motion } from 'framer-motion';
 import { Search, ArrowRight } from 'lucide-react';
 import { useState, useMemo } from 'react';
-import JANO_KEYWORDS from '../utils/dictionary.js';
+import JANO_KEYWORDS from '../utils/dictionary'; // Changed to .ts, implicit
 import { useTranslation } from 'react-i18next';
+
+interface DictionaryEntry {
+  jano: string;
+  js: string;
+}
 
 export default function Dictionary() {
   const [searchTerm, setSearchTerm] = useState('');
   const { t } = useTranslation();
 
-  const dictionaryEntries = useMemo(() => {
+  const dictionaryEntries: DictionaryEntry[] = useMemo(() => {
     return Object.entries(JANO_KEYWORDS).map(([jano, js]) => ({ jano, js }));
   }, []);
 
-  const filteredEntries = useMemo(() => {
+  const filteredEntries: DictionaryEntry[] = useMemo(() => {
     if (!searchTerm) return dictionaryEntries;
     const term = searchTerm.toLowerCase();
     return dictionaryEntries.filter(
       (entry) =>
-        entry.jano.includes(term) ||
+        entry.jano.toLowerCase().includes(term) || // Added .toLowerCase() for consistency
         entry.js.toLowerCase().includes(term)
     );
   }, [searchTerm, dictionaryEntries]);

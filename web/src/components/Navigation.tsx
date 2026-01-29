@@ -6,6 +6,7 @@ import Contributors from './Contributors';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import i18n from '../i18n';
+import { Link } from 'react-router-dom';
 
 export default function Navigation() {
   const { theme, toggleTheme } = useTheme();
@@ -49,10 +50,12 @@ export default function Navigation() {
           </div>
 
           <div className="items-center hidden gap-8 md:flex">
-            <a href="/docs" className="font-medium text-gray-800 transition-colors dark:text-gray-200 hover:text-jano-red dark:hover:text-jano-red">
-              {t('navigation.docs')}
-            </a>
-            <a
+<Link 
+  to="/docs" 
+  className="font-medium text-gray-800 transition-colors dark:text-gray-200 hover:text-jano-red dark:hover:text-jano-red"
+>
+  {t('navigation.docs')}
+</Link>            <a
               href="#playground"
               className="font-medium text-gray-800 transition-colors dark:text-gray-200 hover:text-jano-red dark:hover:text-jano-red"
             >

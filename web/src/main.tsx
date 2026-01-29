@@ -1,5 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+// Removed BrowserRouter import
 import App from './App.tsx';
 import { ThemeProvider } from './context/ThemeContext';
 import './index.css';
